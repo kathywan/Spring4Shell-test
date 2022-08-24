@@ -25,4 +25,5 @@ RUN  --mount=type=secret,id=LW_AGENT_ACCESS_TOKEN  \
   echo '{"tokens": {"accesstoken": "'$(cat /run/secrets/LW_AGENT_ACCESS_TOKEN)'"}}' > /var/lib/lacework/config/config.json
 
 EXPOSE 8080
+ENTRYPOINT ["/var/lib/lacework-backup/lacework-sidecar.sh"]
 CMD ["catalina.sh", "run"]
